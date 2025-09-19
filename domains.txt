@@ -1,0 +1,12 @@
+# One domain or URL per line. Comments start with '#'.
+# Lines can be full URLs (we will extract host), or bare domains.
+# Examples:
+# api.openai.com
+# https://chatgpt.com
+# oaiusercontent.com
+api.openai.com
+openai.com
+oaiusercontent.com
+chatgpt.com
+platform.openai.com
+auth.openai.com
