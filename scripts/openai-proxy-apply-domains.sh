@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
-DOMAINS_FILE="/home/danya/openai-proxy/domains.txt"
-RENDER_SCRIPT="/home/danya/openai-proxy/render_dnsmasq_from_domains.sh"
-TMP_CONF="/home/danya/openai-proxy/dnsmasq-openai.conf"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DOMAINS_FILE="$SCRIPT_DIR/../configs/domains.txt"
+RENDER_SCRIPT="$SCRIPT_DIR/render_dnsmasq_from_domains.sh"
+TMP_CONF="$SCRIPT_DIR/../configs/dnsmasq-openai.conf"
 DST_CONF="/etc/dnsmasq.d/openai-ipset.conf"
 
 # Ensure ipsets exist

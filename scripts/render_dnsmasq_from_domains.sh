@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DOMAINS_FILE="${1:-$SCRIPT_DIR/domains.txt}"
-OUT_FILE="$SCRIPT_DIR/dnsmasq-openai.conf"
+DOMAINS_FILE="${1:-$SCRIPT_DIR/../configs/domains.txt}"
+OUT_FILE="$SCRIPT_DIR/../configs/dnsmasq-openai.conf"
 
 extract_host() {
   local line="$1"

@@ -18,5 +18,5 @@ sed -e "s/{{PROXY_HOST}}/$PROXY_HOST/g" \
     -e "s/{{PROXY_PORT}}/$PROXY_PORT/g" \
     -e "s/{{PROXY_TYPE}}/$proxy_type/g" \
     -e "s#{{AUTH_BLOCK}}#$auth_block#" \
-    "$SCRIPT_DIR/redsocks.conf.template" > "$SCRIPT_DIR/redsocks.conf"
+    "$SCRIPT_DIR/../configs/redsocks.conf.template" > "$SCRIPT_DIR/../configs/redsocks.conf"
 echo "Rendered redsocks.conf ($proxy_type) for $PROXY_HOST:$PROXY_PORT"

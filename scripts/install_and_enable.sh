@@ -18,8 +18,8 @@ sudo ipset create openai6 hash:ip family inet6 timeout 86400 2>/dev/null || true
 "$SCRIPT_DIR/render_redsocks.sh"
 
 # Copy configs into /etc
-sudo install -m 0644 "$SCRIPT_DIR/dnsmasq-openai.conf" /etc/dnsmasq.d/openai-ipset.conf
-sudo install -m 0644 "$SCRIPT_DIR/redsocks.conf" /etc/redsocks.conf
+sudo install -m 0644 "$SCRIPT_DIR/../configs/dnsmasq-openai.conf" /etc/dnsmasq.d/openai-ipset.conf
+sudo install -m 0644 "$SCRIPT_DIR/../configs/redsocks.conf" /etc/redsocks.conf
 
 # Snapshot current upstream resolvers before switching to 127.0.0.1
 if [[ -f /etc/resolv.conf ]]; then
@@ -72,3 +72,4 @@ if ! systemctl is-active --quiet redsocks; then
 fi
 
 echo "Installed and enabled dnsmasq/ipset/redsocks. Proxy ($PROXY_MODE): $PROXY_HOST:$PROXY_PORT"
+echo "Next step - run ./scripts/iptables-apply.sh"
