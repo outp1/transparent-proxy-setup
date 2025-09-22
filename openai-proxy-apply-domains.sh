@@ -15,13 +15,22 @@ install -m 0644 "${TMP_CONF}" "${DST_CONF}"
 
 # Reload dnsmasq to pick up changes
 if systemctl reload dnsmasq 2>/dev/null; then :; else systemctl restart dnsmasq; fi
+sleep 1
 
 # Pre-resolve to populate ipsets quickly
 if command -v dig >/dev/null 2>&1; then
   while IFS= read -r raw || [[ -n "$raw" ]]; do
     line="${raw%%#*}"; line="${line//[$'\t\r\n ']}"; [[ -z "$line" ]] && continue
     host="${line#*://}"; host="${host%%/*}"; [[ -z "$host" ]] && continue
-    dig +short "$host" @127.0.0.1 >/dev/null 2>&1 || true
+    echo "Resolving host: ${host}"
+    # dig +short "$host" @127.0.0.1 >/dev/null 2>&1 || true
+    result="$(dig +short "$host" @127.0.0.1 || true)"
+    if [[ -n "$result" ]]; then
+      echo "$host resolved to:"
+      echo "$result"
+    else
+      echo "$host could not be resolved"
+    fi
   done < "$DOMAINS_FILE"
 fi
 

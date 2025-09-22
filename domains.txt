@@ -10,3 +10,7 @@ oaiusercontent.com
 chatgpt.com
 platform.openai.com
 auth.openai.com
+
+console.anthropic.com
+anthropic.com
+api.anthropic.com
