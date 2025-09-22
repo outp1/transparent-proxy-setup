@@ -14,3 +14,5 @@ auth.openai.com
 console.anthropic.com
 anthropic.com
 api.anthropic.com
+
+api.x.ai
